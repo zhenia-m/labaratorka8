@@ -52,12 +52,7 @@ public class GameMaster {
 		setAllButtonEnabled(false);
 		getCurrentPlayer().getPosition().playAction();
 		if(getCurrentPlayer().isBankrupt()) {
-			gui.setBuyHouseEnabled(false);
-			gui.setDrawCardEnabled(false);
-			gui.setEndTurnEnabled(false);
-			gui.setGetOutOfJailEnabled(false);
-			gui.setPurchasePropertyEnabled(false);
-			gui.setRollDiceEnabled(false);
+			setAllButtonsDisabled();
 			gui.setTradeEnabled(getCurrentPlayerIndex(),false);
 			updateGUI();
 		}
@@ -70,12 +65,7 @@ public class GameMaster {
     public void btnGetOutOfJailClicked() {
 		getCurrentPlayer().getOutOfJail();
 		if(getCurrentPlayer().isBankrupt()) {
-			gui.setBuyHouseEnabled(false);
-			gui.setDrawCardEnabled(false);
-			gui.setEndTurnEnabled(false);
-			gui.setGetOutOfJailEnabled(false);
-			gui.setPurchasePropertyEnabled(false);
-			gui.setRollDiceEnabled(false);
+			setAllButtonsDisabled();
 			gui.setTradeEnabled(getCurrentPlayerIndex(),false);
 		}
 		else {
@@ -85,7 +75,16 @@ public class GameMaster {
 		}
     }
 
-    public void btnPurchasePropertyClicked() {
+	private void setAllButtonsDisabled() {
+		gui.setBuyHouseEnabled(false);
+		gui.setDrawCardEnabled(false);
+		gui.setEndTurnEnabled(false);
+		gui.setGetOutOfJailEnabled(false);
+		gui.setPurchasePropertyEnabled(false);
+		gui.setRollDiceEnabled(false);
+	}
+
+	public void btnPurchasePropertyClicked() {
         Player player = getCurrentPlayer();
 		player.purchase();
 		gui.setPurchasePropertyEnabled(false);
