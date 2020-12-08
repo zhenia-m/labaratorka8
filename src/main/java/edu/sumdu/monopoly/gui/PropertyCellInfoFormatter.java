@@ -1,6 +1,7 @@
 package edu.sumdu.monopoly.gui;
 
 import edu.sumdu.monopoly.Cell;
+import edu.sumdu.monopoly.OwnedCell;
 import edu.sumdu.monopoly.Player;
 import edu.sumdu.monopoly.PropertyCell;
 
@@ -8,7 +9,7 @@ public class PropertyCellInfoFormatter implements CellInfoFormatter {
     public String format(Cell cell) {
         PropertyCell c = (PropertyCell)cell;
         StringBuffer buf = new StringBuffer();
-        Player owner = cell.getOwner();
+        Player owner = ((OwnedCell)cell).getOwner();
         String ownerName = "";
         if(owner != null) {
         	ownerName = owner.getName();
